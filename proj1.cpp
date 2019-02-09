@@ -379,15 +379,33 @@ class TravelOptions{
 
     bool insert_sorted(double price, double time) {
        if(!is_sorted()) return false;
-
-
-
-
-
+       
+       while(price != nullptr && time != nullptr)
+       {
+           if(price > price->next)
+           {
+               price = price->next;
+           }
+           else if(price == price->next)
+           {
+               if(time > time->next)
+               {
+                   time = time->next;
+               }
+               else
+               {
+                   return true;
+               }
+           }
+           else
+           {
+               return true;
+           }
+           
+       }
 
        return true;
     }
-
 
 
     /**
