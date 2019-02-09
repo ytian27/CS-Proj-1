@@ -465,7 +465,21 @@ class TravelOptions{
    */
     bool prune_sorted(){
        if(!is_sorted()) return false;
-
+       Node *p=head;
+        Node *n=head->next;
+        while (n->next!=nullptr){
+            if (p.price == n.price){
+                if (p.time == p.time){
+                    p->next=n->next;
+                    delete n;
+                    n=p->next;
+                }
+            }
+            if (p.price != n.price || p.time != n.time){
+                n=n->next;
+                p=p->next;
+            }
+        }
 
 
 
