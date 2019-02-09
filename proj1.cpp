@@ -528,10 +528,16 @@ class TravelOptions{
    *   a pointer to a new TravelOptions object -- that object just happens to have an empty list.
    */
    TravelOptions * join_plus_plus(const TravelOptions &other) const {
+       //first attempt at this function. gonna come back to it  
+       Node *p=front;
+         TravelOptions tr=other;
+         while (p->next!=nullptr){
+             tr.insert_pareto_sorted(p);
+             p=p->next;
+        }
+	    
 
-	
-
-      return nullptr;  // placeholder to make the compiler happy
+      return tr;
 
 
 
