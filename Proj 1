@@ -288,24 +288,27 @@ class TravelOptions{
     * REMEMBER:  the list does not need to be sorted in order to be pareto
     */
     bool is_pareto() const{
-        bool is_dup;
         Node *p = front;
         
         //reads through the whole linked list
         while(p != nullptr && p->next != nullptr)
         {
-            Node
-            if(p != p->next)
+            Node *q = p;
+            while(q->next != nullptr)
             {
-                return true;
-                p->next++;
-            }
-            else
-            {
-                return false;
-            }
-        }
+                if(p != q->next)
+                {
+                    q->next = q->next->next;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
         
+            }
+        
+        }
 	return false;
 
     }
@@ -327,7 +330,34 @@ class TravelOptions{
 
     */
     bool is_pareto_sorted() const{
-	return false;
+        while(front != nullptr && front->next != nullptr)
+        {
+        while(price != nullptr && price->next != nullptr)
+        {
+            if(price < price->next)
+            {
+                return true;
+                
+            }
+            else
+            {
+                return false;
+            }
+        }
+        while(time != nullptr && time->next != nullptr)
+        {
+            if(time > time->next)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+        }
+    return false;
 
     }
 
