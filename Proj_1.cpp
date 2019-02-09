@@ -40,7 +40,6 @@ class TravelOptions{
       clear();
     }
 
-
    /**
    * func: clear
    * desc: Deletes all Nodes currently in the list
