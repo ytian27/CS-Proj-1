@@ -159,11 +159,7 @@ class TravelOptions{
    * status:  DONE
    */
     void push_front(double price, double time) {
-       //need to point front at the previous front
-        Node temp=front;
       front = new Node(price, time, front);
-      front->next=temp;
-      delete temp;
       _size++;
     }
 
