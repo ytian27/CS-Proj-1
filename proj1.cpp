@@ -644,11 +644,25 @@ class TravelOptions{
 
 	if(!is_pareto_sorted())
 	  return nullptr;
+      Node *p=front;
+    //get to point where the max price is
+    while(p->next.price>=max_price){
+        p=p->next;
+    }
+    //set pointer to the next one above the price
+    Node *temp=p->next;
+    //end list in current traveloptions
+    p->next=nullptr;
+    TravelOptions tr=new TravelOptions;
+    //insert the separated list into the new traveloptions object
+    while (temp->next!=nullptr){
+        tr.insert_sorted(temp);
+        temp=temp->next;
+    }
 
 
 
-
-        return nullptr;  // placeholder to make compiler happy with skeleton
+        return tr;
 
    }
 
