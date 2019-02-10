@@ -583,6 +583,7 @@ class TravelOptions{
        Node *p=front;
          TravelOptions tr=other;
          while (p->next!=nullptr){
+             //TODO: combine the prices and times of p and tr and place result into p.
              tr.insert_pareto_sorted(p);
              p=p->next;
         }
