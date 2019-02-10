@@ -379,7 +379,40 @@ class TravelOptions{
 
     bool insert_sorted(double price, double time) {
        if(!is_sorted()) return false;
-       
+        Node *curr=front;
+        Node *prev=front;
+        Node nnode=new Node;
+        nnode.price=price;
+        nnode.time=time;
+        bool isDone=false;
+        if (front==nullptr){
+            front=nnode;
+            return true;
+        }
+        if (compare(front,nnode)==worse){
+            nnode->next=front;
+            front=nnode;
+            return true;
+        }
+        while(curr->next!=nullptr && !isDone){
+            Relationship status= compare(curr,nnode);
+            if (status==better){
+                prev=curr;
+                curr=curr->next;
+            }
+            if (status==worse || status==equal){
+                prev.next=nnode;
+                nnode.next=curr;
+                return true;
+            }
+        }
+        if (isDone==false){
+            curr->next=nnode;
+            return true;
+        }
+        return false;
+    }
+       /*
        while(price != nullptr && time != nullptr)
        {
            if(price > price->next)
@@ -406,7 +439,7 @@ class TravelOptions{
 
        return true;
     }
-
+    */
 
     /**
      * func: insert_pareto_sorted
